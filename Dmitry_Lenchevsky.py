@@ -3,5 +3,6 @@ print("Количество символов в строке будет:", len(s
 print("Инверсная строка:", sentence[::-1])
 print("Все буквы прописные:", sentence.upper())
 print("Чисто вхождений \"нд\" в строку:", sentence.count("нд"), ", \"ам\" в строке:", sentence.count('ам'), ", \"о\" в строке:", sentence.count('о'))
-
+print("Содержит ли срока числа?", sentence.isalnum())
+print("Выведим последнее предложение строки:", sentence[73:107])
 print("Исхрдная строка:", sentence)
