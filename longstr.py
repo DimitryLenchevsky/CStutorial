@@ -1,6 +1,22 @@
-l = [34, 45, 76, 'fuck', 76, 23]
+from datetime import datetime
 
-i = 0
-while i < 4:
-    print(l[i])
-    i += 1
+def one():
+    start = datetime.now()
+    l = []
+    for i in range(10000):
+        if i % 2 == 0:
+            l.append(i)
+    print(datetime.now() - start)
+    return l
+
+def two():
+    start = datetime.now()
+    l = [x for x in range(10000) if x % 2 == 0]
+    print(datetime.now() - start)
+    return l
+
+l1 = one()
+l2 = two()
+
+#print(l1)
+#print(l2)
