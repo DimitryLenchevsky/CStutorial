@@ -1,4 +1,9 @@
 import datetime
+import pytz
+
+timezone = pytz.timezone('Europe/Minsk')
+print(timezone)
+
 cdt = datetime.datetime.now()
 print(cdt)
 print(type(cdt))
