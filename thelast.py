@@ -1,7 +1,5 @@
-def factorial(n):
-    res = 1
-    for i in range(1, n + 1):
-        res *= i
-    return res
-print(factorial(3))
-print(factorial(5))
+def add(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+add(3, 3, name = "John",lastname = "Johnson")
