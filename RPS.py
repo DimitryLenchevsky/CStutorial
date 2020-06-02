@@ -1,4 +1,6 @@
 class Dog:
+
+    paws = 4
     def __init__(self, a, b):
         self.name = a
         self.age = b
@@ -13,3 +15,6 @@ print(c.name, c.age, 'годиков')
 
 dog.i_wasnt_here = 'string'
 print(dog.i_wasnt_here)
+
+
+print(dog.paws)
