@@ -1,13 +1,13 @@
 class Car: # класс
     wheels = 4 # свойство класса
-    def __init__(self, model, engine_volume): # основной сметод с инициализацией
+    def __init__(self, model, engine_volume): # основной метод с инициализацией (данные ожидаются при вызове класса)
         self.model = model
         self.__engine__ = engine_volume
-    def ready(self): # метод
+    def ready(self): # метод (данные уже вводятся по мере необходимости)
         print("The {} car with {} engine volume is ready to drive!!!" .format(self.model, self.__engine__))
-    def start_engine(self): # метод
+    def start_engine(self): # метод (данные уже вводятся по мере необходимости)
         print("Model {} has started the engine, wroom wroom!!!" .format(self.model))
-    def drive(self):  # метод
+    def drive(self):  # метод (данные уже вводятся по мере необходимости)
         print("{} is driving now" .format(self.model))
 
 car = Car("Ferari", 5.5)
