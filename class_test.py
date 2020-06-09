@@ -30,4 +30,6 @@ class MyInterval:
         """
         return self.class_end - self.start
 
-my_int = MyInterval(2020,5,27 8,13,03)
+my_int = MyInterval(datetime.datetime(2020,5,27))
+
+print('###################################################################')
