@@ -29,3 +29,5 @@ class MyInterval:
         returns length in days
         """
         return self.class_end - self.start
+
+my_int = MyInterval(2020,5,27 8,13,03)
