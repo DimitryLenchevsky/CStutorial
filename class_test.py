@@ -16,3 +16,16 @@ print(car.start_engine())
 print(car.drive())
 
 print('#################################################################')
+# Achtung
+import datetime
+class MyInterval:
+    class_end = datetime.datetime.now()
+
+    def __init__(self, start):
+        self.start = start
+
+    def get_len(self):
+        """
+        returns length in days
+        """
+        return self.class_end - self.start
