@@ -19,7 +19,7 @@ print('#################################################################')
 # Achtung
 import datetime
 class MyInterval:
-    class_end = datetime.datetime.now()
+    class_end = datetime.datetime.now() #классинициируется только 1 раз, поэтому class_end не будет обновляться и будет устаревшим
 
     def __init__(self, start):
         self.start = start
@@ -33,3 +33,6 @@ class MyInterval:
 my_int = MyInterval(datetime.datetime(2020,5,27))
 
 print('###################################################################')
+
+# Наследование
+
