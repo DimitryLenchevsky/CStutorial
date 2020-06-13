@@ -48,8 +48,17 @@ print(opt.can_output())
 print(twoway.can_input())
 print(twoway.can_output())
 
-# Наследование. Кто на ком стоял?
+# Миксин - просто добавляет еще 1 класс к множественному наследованию.
+class MyMixin:
+    def mixin_method(self):
+        print('from mixin')
 
+m = MyMixin()
+class InputOutput(MyMixin, Input, Output):
+    pass
+
+ioo = InputOutput()
+print(ioo.mixin_method())
 
 
 c = Car('red')
