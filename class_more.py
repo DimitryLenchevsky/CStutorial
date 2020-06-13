@@ -28,6 +28,29 @@ class Tank(Car):
         run_type = super().run(*args,**kwargs)
         return run_type + " " + "slowly"
 
+# Множественное наследование
+class Input:
+    def can_input(self):
+        return "I can input data"
+
+class Output:
+    def can_output(self):
+        return "I can output data"
+
+class InputOutput(Input, Output):
+    pass
+
+twoway = InputOutput()
+inp = Input()
+opt = Output()
+print(inp.can_input())
+print(opt.can_output())
+print(twoway.can_input())
+print(twoway.can_output())
+
+# Наследование. Кто на ком стоял?
+
+
 
 c = Car('red')
 pc = Passcar('blue')
