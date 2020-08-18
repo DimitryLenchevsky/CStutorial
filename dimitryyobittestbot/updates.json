@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 493469149,
+      "message": {
+        "message_id": 1,
+        "from": {
+          "id": 279594361,
+          "is_bot": false,
+          "first_name": "Dmitry",
+          "last_name": "Lenchevsky",
+          "username": "DimitryLenchevsky",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 279594361,
+          "first_name": "Dmitry",
+          "last_name": "Lenchevsky",
+          "username": "DimitryLenchevsky",
+          "type": "private"
+        },
+        "date": 1597692866,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 493469150,
+      "message": {
+        "message_id": 3,
+        "from": {
+          "id": 279594361,
+          "is_bot": false,
+          "first_name": "Dmitry",
+          "last_name": "Lenchevsky",
+          "username": "DimitryLenchevsky",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 279594361,
+          "first_name": "Dmitry",
+          "last_name": "Lenchevsky",
+          "username": "DimitryLenchevsky",
+          "type": "private"
+        },
+        "date": 1597730693,
+        "text": "привет"
+      }
+    }
+  ]
+}
