@@ -1,6 +1,8 @@
 import requests
 import misc
-import json
+from yobit import get_btc
+from time import sleep
+#import json
 
 token = misc.token
 # https://api.telegram.org/bot1295729088:AAEM0gn6jZdbzgXxv60srIOZM5s5hqRM5Is/sendmessage?chat_id=279594361&text=hi
@@ -24,12 +26,22 @@ def get_message():
     return message
 
 
+def send_message(chat_id, text='Wait a second please...'):
+    url = URL + 'sendmessage?chat_id={}&text={}'.format(chat_id, text)
+    requests.get(url)
+
 def main():
     #d = get_updates()
-    
-    #with open('updates.json', 'w') as f:
-    #    json.dump(d, f, indent=2, ensure_ascii=False)
-    get_message()
+    while True:
+        answer = get_message()
+        chat_id = answer['chat_id']
+        text = answer['text']
+
+        if text == '/btc':
+            send_message(chat_id, get_btc())
+
+        sleep(2)
+
 
 if __name__ == '__main__':
     main()
