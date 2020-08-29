@@ -15,3 +15,21 @@ def my_mean(in_list: List[Union[int, float]]) -> float:
         count += 1
         summ += i
     return summ / count
+
+
+def get_site_status(url: str) -> Union[int, str]:
+    pass
+    with requests.Session() as s:
+        try:
+            res = s.get(url)
+            return res.status_code
+        except ConnectionError as err:
+            return str(err)
+
+def site_checker(url) -> str:
+    status = get_site_status(url)
+    status = get_site_status(url)
+    if status == 200:
+        return f'site { url } is ok.'
+    else:
+        return f'site { url } is not ok.'
