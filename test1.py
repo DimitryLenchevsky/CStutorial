@@ -1,8 +1,5 @@
-a = [ i for i in range(1, 6)]
-b = iter(a)
-print(next(b))
-print(next(b))
-print(next(b))
-print(next(b))
-print(next(b))
-print(next(b))
+class Dog:
+    def __init__(self):
+        print('I am a dog. Woof woof')
+
+Dog()
