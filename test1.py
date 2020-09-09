@@ -4,8 +4,8 @@ class Interval:
     end = datetime.datetime.now()
     def __init__(self, start):
         self.start = start
-    def get_len(self):
+    def begin(self):
         return self.end - self.start
 
-my_int = Interval(datetime.datetime(2018,12,12, 19,0,0))
-print(my_int.get_len())
+num = Interval(datetime.datetime(2019,4,26, 19,0,0))
+print(num.begin())
