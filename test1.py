@@ -1,11 +1,11 @@
-import datetime
+class Dog:
+    paws = 4
+    def __init__(self, name, age, address):
+        self.name = name
+        self.age = age
+        self.__address = address
+    def sed_dog(self):
+        print('Сообщение было отправлено по адресу {}'.format(self.__address))
 
-class Interval:
-    end = datetime.datetime.now()
-    def __init__(self, start):
-        self.start = start
-    def begin(self):
-        return self.end - self.start
-
-num = Interval(datetime.datetime(2019,4,26, 19,0,0))
-print(num.begin())
+dog = Dog('Шарик', 26, 'Лазо 16')
+print(dog.sed_dog())
