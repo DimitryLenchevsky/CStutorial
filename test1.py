@@ -9,5 +9,3 @@ class Dog:
 
 dog = Dog('Шарик', 3)
 print(dog.month())
-dog.month = 45
-print(dog.month())
