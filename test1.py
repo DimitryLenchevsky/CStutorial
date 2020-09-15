@@ -1,16 +1,27 @@
-import random
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from .forms import FormBase
 
-def pass_gen(min_length=5):
-    a = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3', '4']
-    password_list = []
-    random.shuffle(a)
-    password_list = ''.join([random.choice(a) for x in range(min_length)])
-    return password_list
 
-pwd = pass_gen(min_length=5)
-print(pwd)
+def submit(request):
+    data = dict()
 
-dict = {}
-dict[1] = pwd
+    if request.method == 'POST':
+        form_a = FormBase(request.POST)
 
-print(dict)
+        if form_a.is_valid():
+            base = form_a.save()
+            base.type = 'Type A'
+            base.type_id = base.id
+            base.save()
+            data['is_valid'] = True
+        else:
+            form_a = FormBase()
+
+    else:
+        data['is_valid'] = True
+
+    context = {'form_a': form_a}
+    data['html_form'] = render_to_string(
+        'templates/form.html', context, request=request)
+    return JsonResponse(data)
