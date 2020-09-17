@@ -1,21 +1,17 @@
-class Airplane:
-    engines = 4
-    def __init__(self, a, b):
-        self.seats = a
-        self.rows = b
-    def start_engines(self):
-        print(f'the airplane starts all {self.engines} engines, and all {self.seats} seats are occupied.')
-    def take_off(self):
-        print('The airplane took off')
-    @property
-    def landing(self):
-        print('the airplane landed')
+from polymorphism import Rectangle, Square, Circle
 
-airbus_a380 = Airplane(380, 2)
-print(airbus_a380)
-print(airbus_a380.engines)
-print(airbus_a380.seats)
-print(airbus_a380.rows)
-print(airbus_a380.start_engines())
-print(airbus_a380.take_off())
-print(airbus_a380.landing)
+triangle1 = Rectangle(4, 6)
+triangle2 = Rectangle(5, 8)
+print(triangle1.get_area(), triangle2.get_area())
+
+square1 = Square(4)
+square2 = Square(6)
+print(square1.get_area(), square2.get_area())
+
+circ1 = Circle(3)
+circ2 = Circle(2)
+print(circ1.get_area(), circ2.get_area())
+
+figures = [triangle1, triangle2, square1, square2, circ1, circ2]
+for figure in figures:
+        print(figure.get_area())
