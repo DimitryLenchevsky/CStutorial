@@ -5,10 +5,16 @@ class Airplane:
         self.rows = b
     def start_engines(self):
         print(f'the airplane starts all {self.engines} engines, and all {self.seats} seats are occupied.')
+    def take_off(self):
+        print('The airplane took off')
+    def landing(self):
+        print('the airplane landed')
 
-airobus_a380 = Airplane(380, 2)
-print(airobus_a380)
-print(airobus_a380.engines)
-print(airobus_a380.seats)
-print(airobus_a380.rows)
-print(airobus_a380.start_engines())
+airbus_a380 = Airplane(380, 2)
+print(airbus_a380)
+print(airbus_a380.engines)
+print(airbus_a380.seats)
+print(airbus_a380.rows)
+print(airbus_a380.start_engines())
+print(airbus_a380.take_off())
+print(airbus_a380.landing())
