@@ -1,14 +1,8 @@
-def decorator(func):
-    def wrapper():
-        print('Код до выполнения функции')
-        func()
-        print('Код который сработал после функции')
-    return wrapper
+# sort - это метод списка
+# sorted - это встроенная функция
 
-@decorator
-def show():
-    print('Я обычная функция')
-
-
-#show = decorator(show)
-show()
+a = [-4, 5, 300, 136, -469, 235, 2]
+b = 'hello world'
+c = ('albatros', 'trosablat', 'salbatros', 'solbatras')
+c = sorted(c, reverse=True)
+print(c)
