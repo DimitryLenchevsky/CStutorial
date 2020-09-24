@@ -1,10 +1,12 @@
-name_age = {}
+phone_book = {}
 
-for i in range(3):
-    name = input('Name? ')
-    age = int(input('Age? '))
-    name_age[name] = age
+while True:
+    name = input('Введите пожалуйста имя пользователя ... ')
+    phone_number = int(input('Введите пожалуйста номер телефона '))
+    phone_book[name] = phone_number
+    print('Запись в телефонную книгу добавлена')
+    answer = input('Если вы желаете больше не добавлять номера - введите stop, если еще введем пользователя - нажмите enter')
+    if answer == 'stop':
+        break
 
-name_choice = input('Name to find? ')
-print(name_age[name_choice])
-print(name_age)
+print(phone_book)
