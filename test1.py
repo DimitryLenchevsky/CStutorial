@@ -1,8 +1,10 @@
-# sort - это метод списка
-# sorted - это встроенная функция
+name_age = {}
 
-a = [-4, 5, 300, 136, -469, 235, 2]
-b = 'hello world'
-c = ('albatros', 'trosablat', 'salbatros', 'solbatras')
-c = sorted(c, reverse=True)
-print(c)
+for i in range(3):
+    name = input('Name? ')
+    age = int(input('Age? '))
+    name_age[name] = age
+
+name_choice = input('Name to find? ')
+print(name_age[name_choice])
+print(name_age)
