@@ -1,20 +1,32 @@
-phone_book = {}
+from datetime import datetime
 
-while True:
-    name = input('Введите пожалуйста имя пользователя ... ')
-    phone_number = int(input('Введите пожалуйста номер телефона '))
-    phone_book[name] = phone_number
-    print('Запись в телефонную книгу добавлена')
-    answer = input('Если вы желаете больше не добавлять номера - введите stop, если еще введем пользователя - нажмите enter')
-    if answer == 'stop':
-        break
+# сам декоратор, который применяеться к фкнециям. а в самих функиях функционал декоратора закомментирован.
+def timeit(func):
+    def wrapper():
+        start = datetime.now()
+        result = func()
+        print(datetime.now() - start)
+        return result
+    return wrapper    
 
+@timeit
+def one():
+    #start = datetime.now()
+    l = []
+    for i in range(10000):
+        if i % 2 == 0:
+            l.append(i)
+    #print(datetime.now() - start)
+    return l
+@timeit
+def two():
+    #start = datetime.now()
+    l = [x for x in range(10000) if x % 2 == 0]
+    #print(datetime.now() - start)
+    return l
 
+l1 = one()
+l2 = two()
 
-# sort - это метод списка
-# sorted - это встроенная функция
-a = [-4, 5, 300, 136, -469, 235, 2]
-b = 'hello world'
-c = ('albatros', 'trosablat', 'salbatros', 'solbatras')
-c = sorted(c, reverse=True)
-print(c) 
+#print(l1)
+#print(l2)
