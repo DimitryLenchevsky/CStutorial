@@ -1,0 +1,48 @@
+
+person:
+  name: &name 'Dimitry'
+  occupation: 'programmer'
+  gpa: = 3.5
+  fav_number: 1e+10
+  male: true
+  birhday: 1992-04-26 14:15:33          #ISO 8601
+  flaws: null
+  hobbies:
+    - hiking
+    - moovies
+    - riding bikes
+  moovies: ['Dark Knight', "Shutter Island"]
+  friends:
+    - name: Mathew
+      age: 25
+    - {'name' : 'Adam', 'ade' : 23}
+    -
+      name: 'Joe'
+      age: 24
+  description: > #render in a single line, even if I want to see it as I devided it into lines
+    Lorem Ipsum is simply dummy text of
+    the printing and typesetting industry.
+    Lorem Ipsum has been the industry's
+    standard dummy text ever since the 1500s,
+    when an unknown printer took a galley of type and
+    scrambled it to make a type specimen book.
+  signature: |  # I wanna preserve formating by putting '|'
+    Dima
+    Lenchevsky
+    Programmer
+  id: *name   #the return is gonna be 'Dimitry' because in the 3rd line I have the anchor &name
+
+
+---
+# how to anchor the whole key: value
+  base: &base
+    var1: value1
+
+  foo:
+    <<: *base  #it is gonna be: 'var1: value1'
+    var2: value2
+
+---
+
+age: !!float 23   # it is gonna be 23.0 because of thee !!float
+gpa: !!str 3.5    # the return is gonna be '3.5' because of the !!str
