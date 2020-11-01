@@ -1,0 +1,66 @@
+# comment here about the object
+microservice:
+  app: user-authentification
+  port: 9000
+  version: 1.7
+
+# comment here about the lists
+microservices:    # list
+  - app: user-authentification   #item of the list
+    port: 9000
+    version: 1.7
+  - app: shopping-cart   #item of the list
+    port: 9002
+    version: #[1.9, 2.0, 2.1]   -- also possible
+      - 1.9
+      - 2.0
+      - 2.1
+
+# comment here about the boolean
+microservices:
+  - app: user-authentification
+    port: 9000
+    version: 1.7
+    deployed: true  #true, false, yes, no, on, off
+
+
+# comment on multi-line strings
+multilineString: |
+  this is a multiline string
+  the is another multiline string
+  next line
+
+# another complex example of multiline is included
+apiVersion: v1
+kind: configMap
+metadata:
+  name: mosquito-config-file
+date:
+  mosquito.conf: |
+    log_dest stdout
+    log_type all
+    log_timestamp true
+    listener 9001
+
+#placeholders
+apiVersion: v1
+kind: configMap
+metadata:
+  name: {{ .Values.service.name }}
+selector:
+  app: {{ .Values.service.app }}
+
+#multiple yaml documents
+
+---
+
+apiVersion: v1
+kind: configMap
+metadata:
+  name: mosquito-config-file
+date:
+  mosquito.conf: |
+    log_dest stdout
+    log_type all
+    log_timestamp true
+    listener 9001
