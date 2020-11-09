@@ -34,6 +34,5 @@ class TestSiteChecker(unittest.TestCase):
         self.assertIsNone(mock_get_site_status.assert_called_once_with(url)) # try to uncomment line 30 of funcs.py
             
 
-
 if __name__ == '__main__':
     unittest.main()
