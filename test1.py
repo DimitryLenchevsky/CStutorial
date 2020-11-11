@@ -1,11 +1,6 @@
-a = 'fdgf fdgdf s d s gfhfg er'
-b = a.split(' ')
-print(b)
-
-
-b.sort()
-print(b)
-
-
-c = ' '.join(b)
-print(c)
+c = input()
+if c != c[::-1]: # -1 здесь шаг строки: от конца к началу
+    print("It's not palindrome")
+else:
+    print("It's palindrome")
+input()
