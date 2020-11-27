@@ -41,6 +41,24 @@ print(result1)
 
 def reverse(*args):
     for i in reversed(args):
-        print(i)
+        print(i, end=" ")
 
 b = reverse(3, 5, 6, 7, 1, 9, 6, 2)
+
+print('\n _____________________________________________________ \n')
+
+
+
+def numbers():
+    global a
+    a = 4
+    print(a)
+
+numbers()
+
+
+def numbers2():
+
+    print(a)
+
+numbers2()
