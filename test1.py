@@ -1,64 +1,49 @@
-def power(x, y=2):
-    r = 1
-    while y > 0:
-        r = r * x
-        y = y - 1
-    return r
-
-first = power(3)
-print(first)
-
-second = power(3, 3)
-print(second)
+string1 = 'a\n\tb'
+print(string1)
 
 
-def maxinum(*numbers):
-    if len(numbers) == 0:
-        return None
-    else:
-        maxnum = numbers[0]
-        for n in numbers[1:]:
-            if n > maxnum:
-                maxnum = n
-        return maxnum
+print('abc\n')
+print('abc\n', end='')
 
 
-result = maxinum(2, 5, 7, -1, 9, 4)
-print(result)
+x = 'hello world!'
+c = x.upper()
+print(c)
 
 
-def example_fun(x, y, **other):
-    print('x: {0}, y: {1}, keys in "other": {2}'.format(x, y, list(other.keys())))
-    other_total = 0
-    for k in other.keys():
-        other_total = other_total + other[k]
-    print('The total of values in "other" is {0}'.format(other_total))
+t = ' '.join(['join', 'puts', 'spaces', 'between', 'elements'])
+print(t)
+t = '::'.join(['Separated', 'with', 'colons'])
+print(t)
+
+e = t.split('::')
+print(e)
+
+x = 'a b c d'
+c = x.split(' ', 1)
+print(c)
+c = x.split(' ', 2)
+print(c)
+c = x.split(' ', 9)
+print(c)
 
 
-result1 = example_fun(2, y='1', foo=3, bar=4)
-print(result1)
+x = 'this is a test'
+c = x.split(' ')
+x = '-'.join(c)
+print(x)
+
+x = 'this is a test'
+c = '-'.join(x.split(' '))
+print(c)
 
 
-def reverse(*args):
-    for i in reversed(args):
-        print(i, end=" ")
-
-b = reverse(3, 5, 6, 7, 1, 9, 6, 2)
-
-print('\n _____________________________________________________ \n')
+x = '    Hello,    World\t\t'
+print(x)
+print(x.strip())
+print(x.lstrip())
+print(x.rstrip())
 
 
-
-def numbers():
-    global a
-    a = 4
-    print(a)
-
-numbers()
-
-
-def numbers2():
-
-    print(a)
-
-numbers2()
+import string
+print(string.whitespace)
