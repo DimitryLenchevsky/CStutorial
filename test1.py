@@ -47,3 +47,12 @@ print(x.rstrip())
 
 import string
 print(string.whitespace)
+
+
+x = 'Mississipi'
+print(x.find('ss'))
+print(x.find('zz'))
+print(x.find('ss', 3))
+print(x.find('ss', 0, 3))
+print(x.index('ss'))
+print(x.count('ss'))
