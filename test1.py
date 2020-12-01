@@ -93,3 +93,15 @@ c = list(x)
 del c[-2]
 x = ' '.join(c)
 print(x)
+
+
+x = '{0} is the {1} of the {2}'.format('Ambrosia', 'food', 'gods')
+print(x)
+x = '{{Ambrossia}} is the {0} of the {1}'.format('food', 'gods')
+print(x)
+
+x = '{food} the food of the {user}'.format(food='Apples', user='Dima')
+print(x)
+
+x = '{0} is the {1} of the {user[1]}'.format('Ambrosia', 'food', user=['men', 'women', 'others'])
+print(x)
