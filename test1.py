@@ -56,3 +56,40 @@ print(x.find('ss', 3))
 print(x.find('ss', 0, 3))
 print(x.index('ss'))
 print(x.count('ss'))
+
+print(x.endswith('ssipi'))
+print(x.startswith('Missi'))
+
+print(x.swapcase())
+print(x.capitalize())
+print(x.count('M'))
+print(x.index('Miss'))
+
+
+
+text = 'Hello, World'
+wordlist = list(text)
+print(wordlist)
+print(list(text))
+wordlist[6:] = []
+wordlist.reverse()
+text = "".join(wordlist)
+print(text)
+
+
+text = 'Hello, word, hello'
+print(text.replace(',', ' '))
+
+
+x = ['"abc"', 'def', '"ghi"', '"klm"', 'nop']
+y = ' '.join(x)
+c = y.replace('"', '')
+x = c.split(" ")
+print(x)
+
+
+x = 'Mississippi'
+c = list(x)
+del c[-2]
+x = ' '.join(c)
+print(x)
