@@ -105,3 +105,9 @@ print(x)
 
 x = '{0} is the {1} of the {user[1]}'.format('Ambrosia', 'food', user=['men', 'women', 'others'])
 print(x)
+print('---------------------------')
+print(x, c, text.replace(',', ' '), sep=' | ')
+print(x, c, text.replace(',', ' '), sep='\n\n')
+
+#Еще функция print может использоваться для вывода как в файлы, так и на консоль.
+print('a', 'b', 'c', file=open('testfile.txt', 'w'))
