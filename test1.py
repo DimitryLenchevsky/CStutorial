@@ -1,113 +1,95 @@
-string1 = 'a\n\tb'
-print(string1)
+cd /usr/local/mysql/bin/; ls
+./mysql -u root -p
 
 
-print('abc\n')
-print('abc\n', end='')
+CREATE DATABASE shop;    - создаем базу данных shop (например)
+
+\с shop   - коннектимся к ней
+\d            - показывает какие таблицы уже есть в базе данных
 
 
-x = 'hello world!'
-c = x.upper()
-print(c)
+CREATE TABLE customer(
+    id serial primary key,
+    name varchar(255),
+    email varchar(50),
+    phone varchar(50)
+);
+
+\d customer  - показывает описание таблицы customer (например)
+
+CREATE TABLE product(
+    id serial primary key,
+    name varchar(255),
+    description text,
+    price integer);
+
+CREATE TABLE product_photo(
+    id serial primary key,
+    url varchar(255),
+    product_id integer references product(id));        - получается реляция (связь) сущностей таблиц FOREIGN KEY
 
 
-t = ' '.join(['join', 'puts', 'spaces', 'between', 'elements'])
-print(t)
-t = '::'.join(['Separated', 'with', 'colons'])
-print(t)
-
-e = t.split('::')
-print(e)
-
-x = 'a b c d'
-c = x.split(' ', 1)
-print(c)
-c = x.split(' ', 2)
-print(c)
-c = x.split(' ', 9)
-print(c)
+CREATE TABLE cart(
+    customer_id integer references customer(id),     - получается реляция (связь) сущностей таблиц FOREIGN KEY
+    id serial primary key);
 
 
-x = 'this is a test'
-c = x.split(' ')
-x = '-'.join(c)
-print(x)
-
-x = 'this is a test'
-c = '-'.join(x.split(' '))
-print(c)
+CREATE TABLE cart(                             - два поля в таблице ссылаются на внешние таблицы, образуя MANY TO MANY
+    cart_id integer references cart(id),     
+    product_id integer references product(id));
 
 
-x = '    Hello,    World\t\t'
-print(x)
-print(x.strip())
-print(x.lstrip())
-print(x.rstrip())
+Добавляем данные в таблицу
 
+insert into customer(name, phone, email) values('Василий', ‘102’, ‘vasya@gmail.com’);
 
-import string
-print(string.whitespace)
+Еще 
 
+insert into customer(name, phone, email) values(‘Петр', ‘103’, ‘petr@gmail.com’);
 
-x = 'Mississipi'
-print(x.find('ss'))
-print(x.find('zz'))
-print(x.find('ss', 3))
-print(x.find('ss', 0, 3))
-print(x.index('ss'))
-print(x.count('ss'))
+select * from customer;                   - выбирает все записи в таблице customer
 
-print(x.endswith('ssipi'))
-print(x.startswith('Missi'))
+JOIN
+Соединяет разные колонки из разных таблиц в одну таблицу
 
-print(x.swapcase())
-print(x.capitalize())
-print(x.count('M'))
-print(x.index('Miss'))
+select * from product_photo pp;            - pp это алияс
+select pp.* from product_photo pp; 
+select pp.* from product_photo pp left join product p on p.id=pp.product_id;
+select pp.*, p.name from product_photo pp left join product p on p.id=pp.product_id;
 
+Мы соединили 2 таблицы в 1 финальную таблицу
 
+\d product_photo
+alter table product_photo from constraint product_photo_product_id_fkey;   - мы удалили FOREIGN KEY
 
-text = 'Hello, World'
-wordlist = list(text)
-print(wordlist)
-print(list(text))
-wordlist[6:] = []
-wordlist.reverse()
-text = "".join(wordlist)
-print(text)
+insert into product_photo (‘url’, ‘product_id’) values (‘unknown/url’, 100);
 
+select * from product_photo;             - в итоге мы видим как мы добавили фотографию
 
-text = 'Hello, word, hello'
-print(text.replace(',', ' '))
+Удаление данных из таблиц
 
+delete from product_photo where id=2;      - удаляет всю запись из таблицы по условию
+update product_photo set url=‘iPhone_image_2’ where id=1;    - устанавливает новое значение по условию
 
-x = ['"abc"', 'def', '"ghi"', '"klm"', 'nop']
-y = ' '.join(x)
-c = y.replace('"', '')
-x = c.split(" ")
-print(x)
+Пример комплексного запроса с множеством JOIN
 
+select c.name from customer c;
+select c.name from customer c left join cart on cart.customer_id=c.id;    -  мы соединили таблицы customer и cart
+select c.name, cart.id from customer c left join cart on cart.customer_id=c.id;
 
-x = 'Mississippi'
-c = list(x)
-del c[-2]
-x = ' '.join(c)
-print(x)
+select c.name, cart.id as cart_id from customer c left join cart on cart.customer_id=c.id;
 
+select c.name, cart.id as cart_id from customer c left join cart on cart.customer_id=c.id left join cart_product cp on cp.cart_id=cart.id;
 
-x = '{0} is the {1} of the {2}'.format('Ambrosia', 'food', 'gods')
-print(x)
-x = '{{Ambrossia}} is the {0} of the {1}'.format('food', 'gods')
-print(x)
+select c.name, cart.id as cart_id, cp.product_id from customer c left join cart on cart.customer_id=c.id left join cart_product cp on cp.cart_id=cart.id;
 
-x = '{food} the food of the {user}'.format(food='Apples', user='Dima')
-print(x)
+select c.name, cart.id as cart_id, cp.product_id, p.price from customer c left join cart on cart.customer_id=c.id left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id;
 
-x = '{0} is the {1} of the {user[1]}'.format('Ambrosia', 'food', user=['men', 'women', 'others'])
-print(x)
-print('---------------------------')
-print(x, c, text.replace(',', ' '), sep=' | ')
-print(x, c, text.replace(',', ' '), sep='\n\n')
+В итоге у нас получилась таблица которая состоит из имен клиентов, найди корзин (заказы это клиентов), найди продуктов (товаров) которые заказаны, цены на товар.
 
-#Еще функция print может использоваться для вывода как в файлы, так и на консоль.
-print('a', 'b', 'c', file=open('testfile.txt', 'w'))
+Группировка данных GROUP BY
+
+select c.name, p.price from customer c left join cart on cart.customer_id=c.id left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id;          - У нас получается таблица name и price.
+
+select c.name, sum(p.price) from customer c left join cart on cart.customer_id=c.id left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id group by c.name order by orders_sum desc;    - сортировка по сумме заказа
+
