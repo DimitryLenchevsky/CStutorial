@@ -14,3 +14,15 @@ print(x)
 print(x.items())
 print(x.keys())
 print(x.values())
+
+base = {}
+for i in range(3):
+    name = input('Введите имя: ')
+    age = input('Введите возраст: ')
+    base[name] = age
+
+name_choice = input('Какое имя ищем: ')
+if name_choice in base:
+    print(base[name_choice])
+else:
+    print("Такого имени нет в базе")
