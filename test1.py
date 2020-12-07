@@ -24,12 +24,12 @@ class TestMyMean(unittest.TestCase):
 
 
 class TestSiteChecker(unittest.TestCase):
-    @mock.patch('funcs.get_site_status', return_value=200)
+    @mock.patch('expenses.get_site_status', return_value=200)
     def test_tut_by(self, mock_get_site_status):
         url = 'https://tut.by'
         self.assertEqual(site_checker(url), f'site { url } is ok.')
 
-    @mock.patch('funcs.get_site_status', return_value='Error')
+    @mock.patch('expenses.get_site_status', return_value='Error')
     def test_tut_byq(self, mock_get_site_status):
         url = 'https://tut.byq'
         self.assertEqual(site_checker(url), f'site { url } is not ok.')

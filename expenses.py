@@ -21,12 +21,12 @@ def my_mean(in_list: List[Union[int, float]]) -> float:
 
 def get_site_status(url: str) -> Union[int, str]:
     pass
-    with requests.Session() as s:
-        try:
-            res = s.get(url)
-            return res.status_code
-        except ConnectionError as err:
-            return str(err)
+    # with requests.Session() as s:
+    #     try:
+    #         res = s.get(url)
+    #         return res.status_code
+    #     except ConnectionError as err:
+    #         return str(err)
 
 def site_checker(url: str) -> str:
     status = get_site_status(url)
