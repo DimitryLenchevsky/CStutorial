@@ -1,28 +1,40 @@
-x = {'a':1, 'b':2, 'c':3, 'd':4}
-y = {'a':5, 'e':5, 'f':6}
+import unittest
+from expenses import my_mean, site_checker
+from unittest import mock
 
-del x['d']
-print(x)
-x.setdefault('g', 7)
-print(x)
-x.update(y)
-print(x)
-print(x.get('h', 7))
-print(x)
-x.setdefault('h', 7)
-print(x)
-print(x.items())
-print(x.keys())
-print(x.values())
 
-base = {}
-for i in range(3):
-    name = input('Введите имя: ')
-    age = input('Введите возраст: ')
-    base[name] = age
+class TestMyMean(unittest.TestCase):
 
-name_choice = input('Какое имя ищем: ')
-if name_choice in base:
-    print(base[name_choice])
-else:
-    print("Такого имени нет в базе")
+    def test_my_mean_int(self):
+        self.assertEqual(my_mean([1,]), 1)
+
+    def test_my_mean_list(self):
+        self.assertEqual(my_mean([2, 3, 4]), 3)
+
+    def test_my_mean_float(self):
+        self.assertEqual(my_mean([1.1, 2.2, 3.3]), 6.6/3)
+
+    def test_my_mean_empty_list(self):
+        with self.assertRaises(ZeroDivisionError):
+            res = my_mean([])
+
+    def test_my_mean_string(self):
+        with self.assertRaises(TypeError):
+            res = my_mean(['1', 2, 3])
+
+
+class TestSiteChecker(unittest.TestCase):
+    @mock.patch('funcs.get_site_status', return_value=200)
+    def test_tut_by(self, mock_get_site_status):
+        url = 'https://tut.by'
+        self.assertEqual(site_checker(url), f'site { url } is ok.')
+
+    @mock.patch('funcs.get_site_status', return_value='Error')
+    def test_tut_byq(self, mock_get_site_status):
+        url = 'https://tut.byq'
+        self.assertEqual(site_checker(url), f'site { url } is not ok.')
+        self.assertIsNone(mock_get_site_status.assert_called_once_with(url)) # try to uncomment line 30 of funcs.py
+
+
+if __name__ == '__main__':
+    unittest.main()
